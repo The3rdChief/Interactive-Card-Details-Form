@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>
+      Frontend Mentor | Interactive card details form by Benedict Jr
+    </title>
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="./script.js"></script>
+  </head>
+  <body
+    class="flex flex-col justify-center items-center py-8 max-[700px]:pt-28 relative isolate bg-[#fefefe] min-h-dvh"
+  >
+    <!-- Background Image section -->
+    <picture
+      class="absolute break:w-[30%] break:bottom-0 z-[-1] top-0 left-0 max-[700px]:right-0 pointer-events-none"
+    >
+      <source
+        media="(min-width: 700px)"
+        srcset="./images/bg-main-desktop.png"
+      />
+      <img
+        src="./images/bg-main-mobile.png"
+        class="w-full h-full max-[700px]:h-[14rem] object-cover"
+      />
+    </picture>
+    <!-- End of Background Image section -->
+    <!-- Main section -->
+    <main
+      class="w-11/12 max-w-[900px] min-w-[300px] flex flex-col break:flex-row items-center gap-12 break:gap-16 break:justify-evenly"
+    >
+      <!-- Cards section -->
+      <section
+        class="flex relative flex-col gap-6 max-[700px]:translate-x-[-2rem] max-[440px]:translate-x-[-2.75rem] max-[375px]:translate-x-[-1.3rem]"
+      >
+        <!-- Front card -->
+        <div
+          class="relative isolate z-20 w-64 h-36 shadow-2xl select-none pointer-events-none min-[800px]:scale-125"
+        >
+          <img
+            src="./images/bg-card-front.png"
+            alt="front card"
+            class="absolute z-[-1] w-full h-full pointer-events-none"
+          />
+          <!-- Contents -->
+          <img
+            src="./images/card-logo.svg"
+            alt="logo"
+            class="absolute top-3 left-5 w-14 pointer-events-none"
+          />
+          <div
+            id="card-number-display"
+            class="absolute bottom-11 left-[50%] translate-x-[-50%] min-w-max text-white text-[1.05rem] tracking-widest uppercase"
+          >
+            0000 0000 0000 0000
+          </div>
+
+          <div
+            id="name-display"
+            class="uppercase text-xs text-white absolute bottom-3 left-5"
+          >
+            Jane Appleseed
+          </div>
+
+          <div
+            id="date-display"
+            class="absolute text-xs text-white bottom-3 right-5 flex items-center"
+          >
+            <span id="month-display">00</span>
+            /
+            <span id="year-display">00</span>
+          </div>
+        </div>
+        <!-- End of Front card -->
+        <!-- Back card -->
+        <div
+          class="relative isolate z-10 w-64 h-36 max-[700px]:absolute max-[700px]:top-[-60%] max-[700px]:right-[-3.2rem] max-[375px]:right-[-0.1rem] translate-x-[2.5rem] shadow-2xl select-none pointer-events-none min-[800px]:scale-125 min-[800px]:translate-y-7"
+        >
+          <img
+            src="./images/bg-card-back.png"
+            alt="back card"
+            class="absolute z-[-1] w-full h-full pointer-events-none"
+          />
+          <!-- Content -->
+          <div
+            id="cvc-display"
+            class="absolute top-[3.75rem] right-[1.75rem] text-white text-sm tracking-widest"
+          >
+            000
+          </div>
+        </div>
+        <!-- End of Back card -->
+      </section>
+      <!-- End of Cards section -->
+
+      <!-- Form section -->
+      <form
+        id="form"
+        class="flex flex-col gap-7 items-center text-vd_violet max-w-[330px]"
+      >
+        <!-- Cardholder name -->
+        <div class="space-y-1 w-full relative">
+          <label for="name" class="uppercase tracking-widest"
+            >Cardholder Name</label
+          ><br />
+          <input
+            type="text"
+            id="name"
+            maxlength="20"
+            minlength="3"
+            required
+            placeholder="e.g. Jane Appleseed"
+            class="rounded-lg border-2 border-lite_gray_violet p-3 w-full"
+          />
+          <!-- Error message -->
+          <span
+            id="name-error"
+            class="text-error_red absolute bottom-[-1.2rem] left-1 text-xs"
+          ></span>
+        </div>
+
+        <!-- Card number -->
+        <div class="space-y-1 w-full relative">
+          <label for="number" class="uppercase tracking-widest"
+            >Card Number</label
+          ><br />
+          <input
+            type="text"
+            id="number"
+            maxlength="16"
+            inputmode="numeric"
+            required
+            pattern="[0-9]*"
+            placeholder="e.g. 1234 5678 9123 0000"
+            class="rounded-lg border-2 border-lite_gray_violet p-3 w-full"
+          />
+          <!-- Error message -->
+          <span
+            id="number-error"
+            class="text-error_red absolute bottom-[-1.2rem] left-1 text-xs"
+          ></span>
+        </div>
+
+        <div class="flex items-end gap-4 w-full">
+          <fieldset class="relative grid grid-cols-2 gap-2 space-y-1 w-[11rem]">
+            <legend class="uppercase tracking-widest">Exp. Date (MM/YY)</legend>
+            <input
+              type="text"
+              id="month"
+              maxlength="2"
+              required
+              placeholder="MM"
+              class="rounded-lg border-2 border-lite_gray_violet p-3"
+            />
+            <input
+              type="text"
+              id="year"
+              maxlength="2"
+              required
+              placeholder="YY"
+              class="rounded-lg border-2 border-lite_gray_violet p-3"
+            />
+            <!-- Error message -->
+            <span
+              id="date-error"
+              class="text-error_red absolute bottom-[-1.2rem] left-1 text-xs"
+            ></span>
+          </fieldset>
+
+          <div class="space-y-1 flex-1 relative">
+            <label for="cvc" class="uppercase tracking-widest">CVC</label><br />
+            <input
+              type="text"
+              id="cvc"
+              maxlength="3"
+              minlength="3"
+              inputmode="numeric"
+              required
+              pattern="[0-9]*"
+              placeholder="e.g. 123"
+              class="rounded-lg border-2 border-lite_gray_violet p-3 w-full max-w-max"
+            />
+            <!-- Error message -->
+            <span
+              id="cvc-error"
+              class="text-error_red absolute bottom-[-1.2rem] left-1 text-xs"
+            ></span>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <button
+          type="submit"
+          id="submit"
+          class="w-full bg-vd_violet rounded-md py-4 text-xl text-white cursor-pointer grid place-content-center mt-1"
+        >
+          Confirm
+        </button>
+      </form>
+      <!-- End of Form section -->
+
+      <!-- Completed state start -->
+      <div id="complete" class="flex-col gap-4 items-center">
+        <img src="./images/icon-complete.svg" alt="Complete!" />
+        <h1 class="text-3xl max-w-[12ch] text-center uppercase">
+          Thank you <span id="username"></span>!
+        </h1>
+        <p class="text-gray-600">We've added your card details</p>
+
+        <div
+          id="reload-btn"
+          onclick="document.location.reload()"
+          class="mt-4 w-full bg-vd_violet rounded-md py-4 text-xl text-white cursor-pointer grid place-content-center"
+        >
+          Continue
+        </div>
+      </div>
+      <!-- End of Completed state start -->
+    </main>
+    <!-- End of Main section -->
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+
+    <!-- Ion Icon Script -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

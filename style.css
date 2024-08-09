@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+.attribution {
+  visibility: hidden;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+input {
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: transparent;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
+  border-radius: 0.5rem;
+}
+
+#complete {
+  display: none;
+}
